@@ -1,12 +1,26 @@
+import { Transform } from 'stream';
+
 /*
 Напишите коллбек для array.filter, который отбирает все числа больше num
  */
-export function higherThan(num) {}
+export function higherThan(num) {
+    return function (element) {
+        return element > num;
+    };
+}
 
 /*
 Напишите коллбек для array.filter, который отбирает из массива все строки, включающие в себя substr. Регистр важен.
  */
-export function hasSubstring(substr) {}
+export function hasSubstring(substr) {
+    return function (element) {
+        if (element.indexOf(substr) === -1) {
+            return false;
+        } else {
+            return true;
+        }
+    };
+}
 
 /*
 Напишите функцию `multiply(num)`, которая работает вот так:
@@ -14,4 +28,9 @@ export function hasSubstring(substr) {}
 console.log(multiply(5)(10));
 // 50
  */
-export function multiply(num) {}
+export function multiply(num) {
+    const first_nom = num;
+    return function (second_nom) {
+        return first_nom * second_nom;
+    };
+}
